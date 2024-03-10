@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,25 +18,27 @@ using System.Windows.Threading;
 
 namespace _8bitbinary_riri
 {
-  
+
     public partial class MainWindow : Window
     {
         private int currentScore = 0;
         private int timeInterval = 60;
         private int roundNumber = 1;
+        private string playerName;
+        private int totalPlayTimeInSeconds = 0;
         private DispatcherTimer timer;
         private List<TextBox> textBoxes;
 
-        public MainWindow()
+        public MainWindow(string playerName)
         {
             InitializeComponent();
+            this.playerName = playerName;
             InitializeGame();
         }
-
         private void InitializeGame()
         {
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(timeInterval);
+            timer.Interval = TimeSpan.FromSeconds(1); // Set the timer interval to 1 second
             timer.Tick += Timer_Tick;
 
             textBoxes = new List<TextBox> { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8 };
@@ -45,9 +48,36 @@ namespace _8bitbinary_riri
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            timerTextBlock.Text = "Time Left: 0s";
-            GameOver();
+            timeInterval--; // Decrease the time interval
+
+            // Calculate minutes and seconds
+            int minutes = timeInterval / 60;
+            int seconds = timeInterval % 60;
+
+            // Format the time as "00:00"
+            string formattedTime = $"{minutes:00}:{seconds:00}";
+
+            // Update the timer text block
+            timerTextBlock.Text = $"Time Left: {formattedTime}";
+
+            if (timeInterval <= 0)
+            {
+                GameOver(); // If time interval reaches 0, end the game
+            }
         }
+
+        //for checking lang para mabilis process to input binary
+        private string DecimalToBinary(int decimalNumber)
+        {
+            // Convert decimal to binary
+            string binary = Convert.ToString(decimalNumber, 2);
+
+            // Pad with zeros to ensure it's 8 bits long
+            binary = binary.PadLeft(8, '0');
+
+            return binary;
+        }
+
 
         private void StartNewRound()
         {
@@ -55,17 +85,35 @@ namespace _8bitbinary_riri
             int randomNumber = rnd.Next(256); // Generate a random 8-bit number (0-255)
             randomNumberTextBlock.Text = randomNumber.ToString();
 
+            // Convert the random number to its 8-bit binary representation
+            string binaryNumber = DecimalToBinary(randomNumber);
+            answerTextBox.Text = binaryNumber;
+
             foreach (TextBox textBox in textBoxes)
             {
                 textBox.Text = "0"; // Reset all text boxes to 0
             }
 
             timer.Stop();
-            timeInterval -= (int)(timeInterval * 0.066); // Reduce time interval for next round
-            if (timeInterval <= 0) timeInterval = 0;
-            timer.Interval = TimeSpan.FromSeconds(timeInterval);
+
+            // Calculate the time interval based on the round number
+            if (roundNumber <= 11)
+            {
+                // Determine the reduction amount based on the round number
+                int reductionAmount = Math.Max(60 - (roundNumber - 1) * 4, 20);
+                timeInterval = reductionAmount;
+            }
+            else
+            {
+                // After round 11, keep the timer at 20 seconds
+                timeInterval = 20;
+            }
+
+            timer.Interval = TimeSpan.FromSeconds(1); // Set the timer interval to 1 second
             timer.Start();
             timerTextBlock.Text = $"Time Left: {timeInterval}s";
+
+            roundNumber++; // Increment the round number
         }
 
         private void SelectButton_Click(object sender, RoutedEventArgs e)
@@ -97,15 +145,87 @@ namespace _8bitbinary_riri
             }
         }
 
+        private List<(string playerName, int score, int totalPlayTime)> LoadTopPlayerScores()
+        {
+            string csvFilePath = "player_scores.csv";
+            List<(string playerName, int score, int totalPlayTime)> topPlayerScores = new List<(string playerName, int score, int totalPlayTime)>();
+
+            if (File.Exists(csvFilePath))
+            {
+                // Read all lines from the CSV file
+                string[] lines = File.ReadAllLines(csvFilePath);
+
+                // Parse each line to extract player data
+                foreach (string line in lines)
+                {
+                    string[] parts = line.Split(',');
+                    string playerName = parts[0];
+                    int score = int.Parse(parts[1]);
+                    int totalPlayTime = int.Parse(parts[2]);
+
+                    topPlayerScores.Add((playerName, score, totalPlayTime));
+                }
+            }
+
+            // Sort the top player scores by score (descending) using a simple sorting algorithm
+            for (int i = 0; i < topPlayerScores.Count - 1; i++)
+            {
+                for (int j = i + 1; j < topPlayerScores.Count; j++)
+                {
+                    if (topPlayerScores[j].score > topPlayerScores[i].score)
+                    {
+                        // Swap the elements if the score of the current element is greater
+                        var temp = topPlayerScores[i];
+                        topPlayerScores[i] = topPlayerScores[j];
+                        topPlayerScores[j] = temp;
+                    }
+                }
+            }
+
+            return topPlayerScores.Take(10).ToList(); // Take top 10 scores
+        }
+
         private void GameOver()
         {
-            MessageBox.Show($"Game Over! Your final score is: {currentScore}");
-            timer.Stop();
+            // Save player's data to CSV
+            SavePlayerDataToCSV(playerName, currentScore, totalPlayTimeInSeconds);
+
+            // Load top 10 player scores from the CSV file
+            List<(string playerName, int score, int totalPlayTime)> topPlayerScores = LoadTopPlayerScores();
+
+            // Create and show the top 10 player scores window
+            TopScoresWin topScoresWin = new TopScoresWin(topPlayerScores);
+            topScoresWin.ShowDialog();
+
+            // Reset game state
+            ResetGameState();
+        }
+
+        private void SavePlayerDataToCSV(string playerName, int score, int totalPlayTimeInSeconds)
+        {
+            string csvFilePath = "player_scores.csv";
+
+            // Create or append to the CSV file
+            using (StreamWriter sw = new StreamWriter(csvFilePath, true))
+            {
+                // Write player's data in CSV format: Name,Score,TotalPlayTimeInSeconds
+                sw.WriteLine($"{playerName},{score},{totalPlayTimeInSeconds}");
+            }
+        }
+
+        private void ResetGameState()
+        {
+            // Reset game state variables
             currentScore = 0;
             timeInterval = 60;
             roundNumber = 1;
+
+            // Reset UI elements
             scoreTextBlock.Text = "Score: 0";
-            timerTextBlock.Text = "Time Left: 60s";
+            timerTextBlock.Text = "Time Left: 00:00";
+            answerTextBox.Text = "";
+
+            // Start a new round
             StartNewRound();
         }
     }
