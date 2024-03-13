@@ -103,6 +103,7 @@ namespace _8bitbinary_riri
                 int reductionAmount = Math.Max(60 - (roundNumber - 1) * 4, 20);
                 timeInterval = reductionAmount;
             }
+
             else
             {
                 // After round 11, keep the timer at 20 seconds
@@ -113,7 +114,10 @@ namespace _8bitbinary_riri
             timer.Start();
             timerTextBlock.Text = $"Time Left: {timeInterval}s";
 
-            roundNumber++; // Increment the round number
+            roundNumberTextBlock.Text = $"Round: {roundNumber}"; //pang update  sa wpf para makita ano round
+
+            // add round number
+            roundNumber++;
         }
 
         private void SelectButton_Click(object sender, RoutedEventArgs e)
@@ -137,9 +141,22 @@ namespace _8bitbinary_riri
             int decimalNumber = Convert.ToInt32(binaryNumber, 2);
             int correctAnswer = int.Parse(randomNumberTextBlock.Text);
 
+            int scoreToAdd = 0;
             if (decimalNumber == correctAnswer)
             {
-                currentScore++;
+                if (roundNumber >= 1 && roundNumber <= 5)
+                {
+                    scoreToAdd = 2;
+                }
+                else if (roundNumber >= 6 && roundNumber <= 10)
+                {
+                    scoreToAdd = 3;
+                }
+                else
+                {
+                    scoreToAdd = 4;
+                }
+                currentScore += scoreToAdd;
                 scoreTextBlock.Text = $"Score: {currentScore}";
                 StartNewRound();
             }
@@ -167,14 +184,14 @@ namespace _8bitbinary_riri
                 }
             }
 
-            // Sort the top player scores by score (descending) using a simple sorting algorithm
+            // Sort top player scores by score (descending) 
             for (int i = 0; i < topPlayerScores.Count - 1; i++)
             {
                 for (int j = i + 1; j < topPlayerScores.Count; j++)
                 {
                     if (topPlayerScores[j].score > topPlayerScores[i].score)
                     {
-                        // Swap the elements if the score of the current element is greater
+                        // Swap elements if ung score ng curent element is greater
                         var temp = topPlayerScores[i];
                         topPlayerScores[i] = topPlayerScores[j];
                         topPlayerScores[j] = temp;

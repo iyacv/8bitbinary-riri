@@ -67,10 +67,11 @@
                 <Button x:Name="selectButton8" Tag="8" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0"/>
             </Grid>
         </StackPanel>
+       
 
-        <TextBlock x:Name="scoreTextBlock" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0"/>
+        <TextBlock x:Name="scoreTextBlock" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" Foreground="White" FontSize="16"/>
         <TextBlock x:Name="timerTextBlock" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,80,0,0" Foreground="White" FontSize="20"/>
-        
+        <TextBlock x:Name="roundNumberTextBlock" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,110,0,0" Foreground="White" FontSize="20"/>
         <!-- TextBlock to display the correct answer -->
         <TextBox x:Name="answerTextBox" Text="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,25,0,0" Width="100" IsReadOnly="True"/>
     </Grid>
