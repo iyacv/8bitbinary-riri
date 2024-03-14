@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="8 Bit Binary" Height="450" Width="400">
     <Grid>
-        <TextBlock Text="8 Bit Binary Game" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Margin="0,155,0,0"/>
+        <TextBlock Text="8 Bit Binary Game" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Margin="0,155,0,0" />
         <TextBlock Text="Enter your name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="104,213,0,0"/>
         <TextBox x:Name="playerNameTextBox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,234,0,0" Width="192"/>
 

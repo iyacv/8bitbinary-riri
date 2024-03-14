@@ -26,9 +26,15 @@ namespace _8bitbinary_riri
             // Populate the list box with top player scores
             foreach (var (playerName, score, totalPlayTime) in topPlayerScores)
             {
-                topScoresListBox.Items.Add($"{playerName} - Score: {score}, Total Play Time: {totalPlayTime} seconds");
+                // Convert total playtime to minutes and seconds
+                int minutes = totalPlayTime / 60;
+                int seconds = totalPlayTime % 60;
+
+                // Display total playtime in minutes and seconds format
+                string totalTimeFormatted = $"{minutes} minutes {seconds} seconds";
+
+                topScoresListBox.Items.Add($"{playerName} - Score: {score}, Total Play Time: {totalTimeFormatted}");
             }
         }
     }
 }
-    

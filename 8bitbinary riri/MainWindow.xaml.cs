@@ -25,8 +25,9 @@ namespace _8bitbinary_riri
         private int timeInterval = 60;
         private int roundNumber = 1;
         private string playerName;
-        private int totalPlayTimeInSeconds = 0;
+        private int totalPlayTimeInWhole = 0;
         private DispatcherTimer timer;
+        private DispatcherTimer totalPlayTimeTimer;
         private List<TextBox> textBoxes;
 
         public MainWindow(string playerName)
@@ -41,12 +42,18 @@ namespace _8bitbinary_riri
             timer.Interval = TimeSpan.FromSeconds(1); // Set the timer interval to 1 second
             timer.Tick += Timer_Tick;
 
+            totalPlayTimeTimer = new DispatcherTimer();
+            totalPlayTimeTimer.Interval = TimeSpan.FromSeconds(1); // Set the timer interval to 1 second
+            totalPlayTimeTimer.Tick += TotalPlayTimeTimer_Tick;
+
             textBoxes = new List<TextBox> { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8 };
 
             StartNewRound();
+            totalPlayTimeTimer.Start(); // Start the total playtime timer
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+
+    private void Timer_Tick(object sender, EventArgs e)
         {
             timeInterval--; // Decrease the time interval
 
@@ -66,8 +73,15 @@ namespace _8bitbinary_riri
             }
         }
 
-        //for checking lang para mabilis process to input binary
-        private string DecimalToBinary(int decimalNumber)
+        private void TotalPlayTimeTimer_Tick(object sender, EventArgs e)
+        {
+            totalPlayTimeInWhole++; // Increment the total playtime every second
+        }
+
+    
+
+    //for checking lang para mabilis process to input binary
+    private string DecimalToBinary(int decimalNumber)
         {
             // Convert decimal to binary
             string binary = Convert.ToString(decimalNumber, 2);
@@ -205,7 +219,7 @@ namespace _8bitbinary_riri
         private void GameOver()
         {
             // Save player's data to CSV
-            SavePlayerDataToCSV(playerName, currentScore, totalPlayTimeInSeconds);
+            SavePlayerDataToCSV(playerName, currentScore, totalPlayTimeInWhole);
 
             // Load top 10 player scores from the CSV file
             List<(string playerName, int score, int totalPlayTime)> topPlayerScores = LoadTopPlayerScores();
@@ -218,7 +232,7 @@ namespace _8bitbinary_riri
             ResetGameState();
         }
 
-        private void SavePlayerDataToCSV(string playerName, int score, int totalPlayTimeInSeconds)
+        private void SavePlayerDataToCSV(string playerName, int score, int totalPlayTimeInWhole)
         {
             string csvFilePath = "player_scores.csv";
 
@@ -226,7 +240,7 @@ namespace _8bitbinary_riri
             using (StreamWriter sw = new StreamWriter(csvFilePath, true))
             {
                 // Write player's data in CSV format: Name,Score,TotalPlayTimeInSeconds
-                sw.WriteLine($"{playerName},{score},{totalPlayTimeInSeconds}");
+                sw.WriteLine($"{playerName},{score},{totalPlayTimeInWhole}");
             }
         }
 
