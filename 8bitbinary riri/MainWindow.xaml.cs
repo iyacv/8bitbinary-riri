@@ -206,8 +206,8 @@ namespace _8bitbinary_riri
                 {
                     if (topPlayerScores[j].score > topPlayerScores[i].score)
                     {
-                        // Swap elements if ung score ng curent element is greater
-                        var temp = topPlayerScores[i];
+                        // Swap elements if the score of the current element is greater
+                        (string playerName, int score, int totalPlayTime) temp = topPlayerScores[i];
                         topPlayerScores[i] = topPlayerScores[j];
                         topPlayerScores[j] = temp;
                     }
