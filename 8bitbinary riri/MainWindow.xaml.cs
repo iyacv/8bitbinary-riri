@@ -43,19 +43,19 @@ namespace _8bitbinary_riri
             timer.Tick += Timer_Tick;
 
             totalPlayTimeTimer = new DispatcherTimer();
-            totalPlayTimeTimer.Interval = TimeSpan.FromSeconds(1); // Set the timer interval to 1 second
+            totalPlayTimeTimer.Interval = TimeSpan.FromSeconds(1); 
             totalPlayTimeTimer.Tick += TotalPlayTimeTimer_Tick;
 
             textBoxes = new List<TextBox> { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8 };
 
             StartNewRound();
-            totalPlayTimeTimer.Start(); // Start the total playtime timer
+            totalPlayTimeTimer.Start(); 
         }
 
 
     private void Timer_Tick(object sender, EventArgs e)
         {
-            timeInterval--; // Decrease the time interval
+            timeInterval--;
 
             // Calculate minutes and seconds
             int minutes = timeInterval / 60;
@@ -77,6 +77,7 @@ namespace _8bitbinary_riri
         {
             totalPlayTimeInWhole++; // Increment the total playtime every second
         }
+
 
     
 

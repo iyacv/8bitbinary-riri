@@ -24,7 +24,7 @@ namespace _8bitbinary_riri
             InitializeComponent();
 
             // Populate the list box with top player scores
-            foreach (var (playerName, score, totalPlayTime) in topPlayerScores)
+            foreach ((string playerName, int score, int totalPlayTime) in topPlayerScores)
             {
                 // Convert total playtime to minutes and seconds
                 int minutes = totalPlayTime / 60;
