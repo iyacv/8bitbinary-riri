@@ -57,19 +57,16 @@ namespace _8bitbinary_riri
         {
             timeInterval--;
 
-            // Calculate minutes and seconds
             int minutes = timeInterval / 60;
             int seconds = timeInterval % 60;
-
-            // Format the time as "00:00"
+          
             string formattedTime = $"{minutes:00}:{seconds:00}";
-
-            // Update the timer text block
+            //update oras
             timerTextBlock.Text = $"Time Left: {formattedTime}";
 
             if (timeInterval <= 0)
             {
-                GameOver(); // If time interval reaches 0, end the game
+                GameOver(); 
             }
         }
 
@@ -81,28 +78,28 @@ namespace _8bitbinary_riri
 
     
 
-    //for checking lang para mabilis process to input binary
-    private string DecimalToBinary(int decimalNumber)
-        {
-            // Convert decimal to binary
-            string binary = Convert.ToString(decimalNumber, 2);
+    ////for checking lang para mabilis process to input binary
+    //private string DecimalToBinary(int decimalNumber)
+    //    {
+    //        // Convert decimal to binary
+    //        string binary = Convert.ToString(decimalNumber, 2);
 
-            // Pad with zeros to ensure it's 8 bits long
-            binary = binary.PadLeft(8, '0');
+    //        // Pad with zeros to ensure it's 8 bits long
+    //        binary = binary.PadLeft(8, '0');
 
-            return binary;
-        }
+    //        return binary;
+    //    }
 
 
         private void StartNewRound()
         {
             Random rnd = new Random();
-            int randomNumber = rnd.Next(256); // Generate a random 8-bit number (0-255)
+            int randomNumber = rnd.Next(256); 
             randomNumberTextBlock.Text = randomNumber.ToString();
 
-            // Convert the random number to its 8-bit binary representation
-            string binaryNumber = DecimalToBinary(randomNumber);
-            answerTextBox.Text = binaryNumber;
+            //// Convert the random number to its 8-bit binary representation
+            //string binaryNumber = DecimalToBinary(randomNumber);
+            //answerTextBox.Text = binaryNumber;
 
             foreach (TextBox textBox in textBoxes)
             {
