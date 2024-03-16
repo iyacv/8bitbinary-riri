@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Media;
 
 namespace _8bitbinary_riri
 {
@@ -19,6 +20,8 @@ namespace _8bitbinary_riri
     /// </summary>
     public partial class Window1 : Window
     {
+        private SoundPlayer MenuSound;
+
         public Window1()
         {
             InitializeComponent();
