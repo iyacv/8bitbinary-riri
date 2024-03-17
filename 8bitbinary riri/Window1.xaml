@@ -7,11 +7,13 @@
         mc:Ignorable="d"
         Title="8 Bit Binary" Height="450" Width="400">
     <Grid>
-        <TextBlock Text="8 Bit Binary Game" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Margin="0,155,0,0" FontFamily="DePixel Breit" />
-        <TextBlock Text="Enter your name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="104,213,0,0"/>
-        <TextBox x:Name="playerNameTextBox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,234,0,0" Width="192"/>
+        <Image Source="/mainmenu .png" Stretch="Fill"/>
+        <TextBlock Text="8 Bit Binary Game" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Margin="0,155,0,0" FontFamily="DePixel Breit" Foreground="#FFDA6725" />
+        <TextBlock Text="Enter your name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="104,213,0,0" FontWeight="Bold" FontFamily="Segoe UI Black" Foreground="White"/>
+        <TextBox x:Name="playerNameTextBox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,234,0,0" Width="192" FontFamily="DePixel Breit" FontSize="14"/>
 
-        <Button Content="Start" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,278,0,0" Click="StartButton_Click"/>
+        <Button Content="Start" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,278,0,0" Click="StartButton_Click" FontSize="18" FontFamily="Segoe UI Black" BorderBrush="#FFDA6725" Background="#FFDA6725"/>
+        
 
     </Grid>
 </Window>

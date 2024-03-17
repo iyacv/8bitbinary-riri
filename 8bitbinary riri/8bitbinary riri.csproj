@@ -110,6 +110,7 @@
     </EmbeddedResource>
     <Resource Include="Pixeled.ttf" />
     <Resource Include="DePixelBreit.otf" />
+    <Resource Include="BebasNeue-Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -132,6 +133,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="7-removebgcrop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pixeleaderboards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pixelleaderb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mainmenu .png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

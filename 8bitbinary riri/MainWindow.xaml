@@ -8,71 +8,72 @@
         Title="MainWindow" Height="500" Width="800">
     <Grid>
         <Image x:Name="pixel" Margin="0,1,0,0" Source="/pixel bg2 violet.png" Stretch="Fill"/>
-        <TextBlock x:Name="randomNumberTextBlock" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="24" Foreground="White"/>
+        <TextBlock x:Name="randomNumberTextBlock" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="36" Foreground="White" FontWeight="Bold"/>
         <StackPanel Margin="0,1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-            
+
             <Grid>
                 <Label Content="128" HorizontalAlignment="Center" Foreground="#FFFFC803" FontWeight="Bold" FontFamily="Segoe UI Black" />
                 <Image Height="90" Width="80" Margin="0,0,10,0" Source="/7-removebgcrop.png" Stretch="Fill"/>
                 <TextBox x:Name="textBox1" Text="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" FontSize="36" BorderBrush="{x:Null}" IsReadOnly="True" FontFamily="DePixel Breit"/>
-                <Button x:Name="selectButton1" Tag="1" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0"/>
+                <Button x:Name="selectButton1" Tag="1" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0" Background="#FFDA6725" BorderBrush="#FFDA6725" FontWeight="Bold" FontSize="14" FontFamily="Segoe UI Black"/>
             </Grid>
 
             <Grid>
                 <Label Content="64" HorizontalAlignment="Center" Foreground="#FFFFC803" FontWeight="Bold" FontFamily="Segoe UI Black" />
                 <Image Height="90" Width="80" Margin="0,0,10,0" Source="/7-removebgcrop.png" Stretch="Fill"/>
                 <TextBox  x:Name="textBox2" Text="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" FontSize="36" BorderBrush="{x:Null}" IsReadOnly="True" FontFamily="DePixel Breit" />
-                <Button x:Name="selectButton2" Tag="2" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0"/>
+                <Button x:Name="selectButton2" Tag="2" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0" Background="#FFDA6725" BorderBrush="#FFDA6725" FontWeight="Bold" FontSize="14" FontFamily="Segoe UI Black"/>
             </Grid>
 
             <Grid>
                 <Label Content="32" HorizontalAlignment="Center" Foreground="#FFFFC803" FontWeight="Bold" FontFamily="Segoe UI Black" />
                 <Image Height="90" Width="80" Margin="0,0,10,0" Source="/7-removebgcrop.png" Stretch="Fill"/>
                 <TextBox  x:Name="textBox3" Text="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" FontSize="36" BorderBrush="{x:Null}" IsReadOnly="True" FontFamily="DePixel Breit"/>
-                <Button x:Name="selectButton3" Tag="3" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0"/>
+                <Button x:Name="selectButton3" Tag="3" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0" Background="#FFDA6725" FontWeight="Bold" FontSize="14" FontFamily="Segoe UI Black" BorderBrush="#FFDA6725"/>
             </Grid>
 
             <Grid>
                 <Label Content="16" HorizontalAlignment="Center" Foreground="#FFFFC803" FontWeight="Bold" FontFamily="Segoe UI Black" />
                 <Image Height="90" Width="80" Margin="0,0,10,0" Source="/7-removebgcrop.png" Stretch="Fill"/>
                 <TextBox  x:Name="textBox4" Text="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" FontSize="36" BorderBrush="{x:Null}" IsReadOnly="True" FontFamily="DePixel Breit"/>
-                <Button x:Name="selectButton4" Tag="4" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0"/>
+                <Button x:Name="selectButton4" Tag="4" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0" Background="#FFDA6725" BorderBrush="#FFDA6725" FontSize="14" FontWeight="Bold" FontFamily="Segoe UI Black"/>
             </Grid>
 
             <Grid>
                 <Label Content="8" HorizontalAlignment="Center" Foreground="#FFFFC803" FontWeight="Bold" FontFamily="Segoe UI Black" />
                 <Image Height="90" Width="80" Margin="0,0,10,0" Source="/7-removebgcrop.png" Stretch="Fill"/>
                 <TextBox  x:Name="textBox5" Text="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" FontSize="36" BorderBrush="{x:Null}" IsReadOnly="True" FontFamily="DePixel Breit"/>
-                <Button x:Name="selectButton5" Tag="5" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0"/>
+                <Button x:Name="selectButton5" Tag="5" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0" Background="#FFDA6725" BorderBrush="#FFDA6725" FontSize="14" FontFamily="Segoe UI Black"/>
             </Grid>
-            
+
             <Grid>
                 <Label Content="4" HorizontalAlignment="Center" Foreground="#FFFFC803" FontWeight="Bold" FontFamily="Segoe UI Black" />
                 <Image Height="90" Width="80" Margin="0,0,10,0" Source="/7-removebgcrop.png" Stretch="Fill"/>
                 <TextBox  x:Name="textBox6" Text="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" FontSize="36" BorderBrush="{x:Null}" IsReadOnly="True" FontFamily="DePixel Breit"/>
-                <Button x:Name="selectButton6" Tag="6" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0"/>
+                <Button x:Name="selectButton6" Tag="6" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0" FontSize="14" FontFamily="Segoe UI Black" Background="#FFDA6725"/>
             </Grid>
-            
+
             <Grid>
                 <Label Content="2" HorizontalAlignment="Center" Foreground="#FFFFC803" FontWeight="Bold" FontFamily="Segoe UI Black" />
                 <Image Height="90" Width="80" Margin="0,0,10,0" Source="/7-removebgcrop.png" Stretch="Fill"/>
                 <TextBox  x:Name="textBox7" Text="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" FontSize="36" BorderBrush="{x:Null}" IsReadOnly="True" FontFamily="DePixel Breit"/>
-                <Button x:Name="selectButton7" Tag="7" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0"/>
+                <Button x:Name="selectButton7" Tag="7" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0"  Background="#FFDA6725" BorderBrush="#FFDA6725" FontFamily="Segoe UI Black" FontSize="14"/>
             </Grid>
-            
+
             <Grid>
                 <Label Content="1" HorizontalAlignment="Center" Foreground="#FFFFC803" FontWeight="Bold" FontFamily="Segoe UI Black" />
                 <Image Height="90" Width="80" Margin="0,0,10,0" Source="/7-removebgcrop.png" Stretch="Fill"/>
                 <TextBox  x:Name="textBox8" Text="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" FontSize="36" BorderBrush="{x:Null}" IsReadOnly="True" FontFamily="DePixel Breit"  />
-                <Button x:Name="selectButton8" Tag="8" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0"/>
+                <Button x:Name="selectButton8" Tag="8" Content="Select" Click="SelectButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0" FontFamily="Segoe UI Black" Background="#FFDA6725" FontWeight="Bold" BorderBrush="#FFDA6725"  FontSize="14"   />
             </Grid>
         </StackPanel>
-       
 
-        <TextBlock x:Name="scoreTextBlock" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" Foreground="White" FontSize="16"/>
-        <TextBlock x:Name="timerTextBlock" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,80,0,0" Foreground="White" FontSize="20"/>
-        <TextBlock x:Name="roundNumberTextBlock" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,110,0,0" Foreground="White" FontSize="20"/>
+
+        <TextBlock x:Name="roundNumberTextBlock" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,19,0,0" Foreground="#FFDA6725" FontSize="18" FontFamily="DePixel Breit" Width="113"/>
+        <TextBlock x:Name="scoreTextBlock" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="688,19,0,0" Foreground="#FFDA6725" FontSize="14" Width="102" FontFamily="DePixel Breit"/>
+        <TextBlock x:Name="timerTextBlock" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,80,0,0" Foreground="#FFFFC803" FontSize="20" FontWeight="Bold" FontFamily="DePixel Breit"/>
+
         <!-- TextBlock to display the correct answer -->
-        <TextBox x:Name="answerTextBox" Text="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,25,0,0" Width="100" IsReadOnly="True"/>
+        <TextBox x:Name="answerTextBox" Text="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="679,397,0,0" Width="100" IsReadOnly="True"/>
     </Grid>
 </Window>

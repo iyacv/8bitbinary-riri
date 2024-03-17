@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Media;
+using System.Threading;
 
 namespace _8bitbinary_riri
 {
@@ -29,15 +31,23 @@ namespace _8bitbinary_riri
         private DispatcherTimer timer;
         private DispatcherTimer totalPlayTimeTimer;
         private List<TextBox> textBoxes;
+        private SoundPlayer Sound_bgmusic;
+        private SoundPlayer Sound_selectbutton;
+        //private SoundPlayer Sound_countdown10sec;
 
         public MainWindow(string playerName)
         {
             InitializeComponent();
             this.playerName = playerName;
+
+            //Sound_bgmusic = new SoundPlayer(@"C:\Users\Riann\Downloads\8bitbgmusic.wav");
+            Sound_selectbutton = new SoundPlayer(@"C:\Users\Riann\Downloads\8bitselectbutton.wav");
             InitializeGame();
         }
+
         private void InitializeGame()
         {
+          
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1); // Set the timer interval to 1 second
             timer.Tick += Timer_Tick;
@@ -49,11 +59,13 @@ namespace _8bitbinary_riri
             textBoxes = new List<TextBox> { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8 };
 
             StartNewRound();
-            totalPlayTimeTimer.Start(); 
+            totalPlayTimeTimer.Start();
+            
+            
         }
 
 
-    private void Timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             timeInterval--;
 
@@ -76,19 +88,17 @@ namespace _8bitbinary_riri
         }
 
 
-    
+        ////for checking lang para mabilis process to input binary
+        private string DecimalToBinary(int decimalNumber)
+        {
+            // Convert decimal to binary
+            string binary = Convert.ToString(decimalNumber, 2);
 
-    ////for checking lang para mabilis process to input binary
-    //private string DecimalToBinary(int decimalNumber)
-    //    {
-    //        // Convert decimal to binary
-    //        string binary = Convert.ToString(decimalNumber, 2);
+            // Pad with zeros to ensure it's 8 bits long
+            binary = binary.PadLeft(8, '0');
 
-    //        // Pad with zeros to ensure it's 8 bits long
-    //        binary = binary.PadLeft(8, '0');
-
-    //        return binary;
-    //    }
+            return binary;
+        }
 
 
         private void StartNewRound()
@@ -98,8 +108,8 @@ namespace _8bitbinary_riri
             randomNumberTextBlock.Text = randomNumber.ToString();
 
             //// Convert the random number to its 8-bit binary representation
-            //string binaryNumber = DecimalToBinary(randomNumber);
-            //answerTextBox.Text = binaryNumber;
+            string binaryNumber = DecimalToBinary(randomNumber);
+            answerTextBox.Text = binaryNumber;
 
             foreach (TextBox textBox in textBoxes)
             {
@@ -126,7 +136,7 @@ namespace _8bitbinary_riri
             timer.Start();
             timerTextBlock.Text = $"Time Left: {timeInterval}s";
 
-            roundNumberTextBlock.Text = $"Round: {roundNumber}"; //pang update  sa wpf para makita ano round
+            roundNumberTextBlock.Text = $"Round {roundNumber}"; //pang update  sa wpf para makita ano round
 
             // add round number
             roundNumber++;
@@ -134,6 +144,7 @@ namespace _8bitbinary_riri
 
         private void SelectButton_Click(object sender, RoutedEventArgs e)
         {
+            
             Button button = (Button)sender;
             int index = int.Parse(button.Tag.ToString()) - 1; // Get the index of corresponding textbox
             TextBox textBox = textBoxes[index];
@@ -141,6 +152,7 @@ namespace _8bitbinary_riri
             textBox.Text = (currentValue == 0) ? "1" : "0"; // Toggle between 0 and 1
             // Check the answer after each selection
             CheckAnswer();
+            Sound_selectbutton.Play();
         }
 
         private void CheckAnswer()
@@ -256,6 +268,8 @@ namespace _8bitbinary_riri
 
             // Start a new round
             StartNewRound();
+            
         }
+
     }
 }
