@@ -31,7 +31,7 @@ namespace _8bitbinary_riri
         private DispatcherTimer timer;
         private DispatcherTimer totalPlayTimeTimer;
         private List<TextBox> textBoxes;
-        private SoundPlayer Sound_bgmusic;
+       // private SoundPlayer Sound_bgmusic;
         private SoundPlayer Sound_selectbutton;
         //private SoundPlayer Sound_countdown10sec;
 

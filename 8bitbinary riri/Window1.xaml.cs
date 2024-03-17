@@ -20,7 +20,7 @@ namespace _8bitbinary_riri
     /// </summary>
     public partial class Window1 : Window
     {
-        private SoundPlayer MenuSound;
+        //private SoundPlayer MenuSound;
 
         public Window1()
         {

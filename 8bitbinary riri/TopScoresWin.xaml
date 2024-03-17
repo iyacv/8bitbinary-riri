@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         Title="TopScoresWin" Height="450" Width="400">
     <Grid>
-        <Image Source="/pixelleaderb.png" Stretch="UniformToFill" Margin="0,-1,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="400">
+        <Image Source="/pixelleaderb.png" Stretch="UniformToFill" Margin="0,-1,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Width="434">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
-                    <SkewTransform AngleX="0.158"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="0.621"/>
+                    <SkewTransform AngleX="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform X="0"/>
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
