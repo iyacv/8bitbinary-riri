@@ -143,5 +143,10 @@
   <ItemGroup>
     <Resource Include="mainmenu .png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="8bit10seccounttdown.wav" />
+    <Content Include="8bitbgmusic.wav" />
+    <Content Include="8bitselectbutton.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
