@@ -88,17 +88,17 @@ namespace _8bitbinary_riri
         }
 
 
-        ////for checking lang para mabilis process to input binary
-        private string DecimalToBinary(int decimalNumber)
-        {
-            // Convert decimal to binary
-            string binary = Convert.ToString(decimalNumber, 2);
+        //////for checking lang para mabilis process to input binary
+        //private string DecimalToBinary(int decimalNumber)
+        //{
+        //    // Convert decimal to binary
+        //    string binary = Convert.ToString(decimalNumber, 2);
 
-            // Pad with zeros to ensure it's 8 bits long
-            binary = binary.PadLeft(8, '0');
+        //    // Pad with zeros to ensure it's 8 bits long
+        //    binary = binary.PadLeft(8, '0');
 
-            return binary;
-        }
+        //    return binary;
+        //}
 
 
         private void StartNewRound()
@@ -107,9 +107,9 @@ namespace _8bitbinary_riri
             int randomNumber = rnd.Next(256); 
             randomNumberTextBlock.Text = randomNumber.ToString();
 
-            //// Convert the random number to its 8-bit binary representation
-            string binaryNumber = DecimalToBinary(randomNumber);
-            answerTextBox.Text = binaryNumber;
+            ////// Convert the random number to its 8-bit binary representation
+            //string binaryNumber = DecimalToBinary(randomNumber);
+            //answerTextBox.Text = binaryNumber;
 
             foreach (TextBox textBox in textBoxes)
             {
@@ -143,17 +143,36 @@ namespace _8bitbinary_riri
         }
 
         private void SelectButton_Click(object sender, RoutedEventArgs e)
+
         {
-            
             Button button = (Button)sender;
-            int index = int.Parse(button.Tag.ToString()) - 1; // Get the index of corresponding textbox
+            int index = int.Parse(button.Tag.ToString()) - 1; // kunin index ng corresponding textbox
             TextBox textBox = textBoxes[index];
-            int currentValue = int.Parse(textBox.Text);
-            textBox.Text = (currentValue == 0) ? "1" : "0"; // Toggle between 0 and 1
-            // Check the answer after each selection
+
+            if (textBox.Text == "0")
+            {
+                textBox.Text = "1";
+            }
+            else
+            {
+                textBox.Text = "0";
+            }
+
             CheckAnswer();
             Sound_selectbutton.Play();
         }
+
+        //{
+
+        //    Button button = (Button)sender;
+        //    int index = int.Parse(button.Tag.ToString()) - 1; // Get the index of corresponding textbox
+        //    TextBox textBox = textBoxes[index];
+        //    int currentValue = int.Parse(textBox.Text);
+        //    textBox.Text = (currentValue == 0) ? "1" : "0"; // Toggle between 0 and 1
+        //    // Check the answer after each selection
+        //    CheckAnswer();
+        //    Sound_selectbutton.Play();
+        //}
 
         private void CheckAnswer()
         {
