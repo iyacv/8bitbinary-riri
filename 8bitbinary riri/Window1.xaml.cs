@@ -15,9 +15,6 @@ using System.Media;
 
 namespace _8bitbinary_riri
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
     public partial class Window1 : Window
     {
         //private SoundPlayer MenuSound;

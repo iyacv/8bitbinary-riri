@@ -84,7 +84,7 @@ namespace _8bitbinary_riri
 
         private void TotalPlayTimeTimer_Tick(object sender, EventArgs e)
         {
-            totalPlayTimeInWhole++; // Increment the total playtime every second
+            totalPlayTimeInWhole++; //increment!!!
         }
 
 
@@ -107,7 +107,7 @@ namespace _8bitbinary_riri
             int randomNumber = rnd.Next(256); 
             randomNumberTextBlock.Text = randomNumber.ToString();
 
-            ////// Convert the random number to its 8-bit binary representation
+            //////// Convert  random number to its 8-bit binary representation
             //string binaryNumber = DecimalToBinary(randomNumber);
             //answerTextBox.Text = binaryNumber;
 
@@ -138,7 +138,6 @@ namespace _8bitbinary_riri
 
             roundNumberTextBlock.Text = $"Round {roundNumber}"; //pang update  sa wpf para makita ano round
 
-            // add round number
             roundNumber++;
         }
 
@@ -161,18 +160,6 @@ namespace _8bitbinary_riri
             CheckAnswer();
             Sound_selectbutton.Play();
         }
-
-        //{
-
-        //    Button button = (Button)sender;
-        //    int index = int.Parse(button.Tag.ToString()) - 1; // Get the index of corresponding textbox
-        //    TextBox textBox = textBoxes[index];
-        //    int currentValue = int.Parse(textBox.Text);
-        //    textBox.Text = (currentValue == 0) ? "1" : "0"; // Toggle between 0 and 1
-        //    // Check the answer after each selection
-        //    CheckAnswer();
-        //    Sound_selectbutton.Play();
-        //}
 
         private void CheckAnswer()
         {
@@ -253,11 +240,10 @@ namespace _8bitbinary_riri
             // Load top 10 player scores from the CSV file
             List<(string playerName, int score, int totalPlayTime)> topPlayerScores = LoadTopPlayerScores();
 
-            // Create and show the top 10 player scores window
-            TopScoresWin topScoresWin = new TopScoresWin(topPlayerScores);
+            // Show the top 10 player scores window with recent player's score
+            TopScoresWin topScoresWin = new TopScoresWin(topPlayerScores, currentScore);
             topScoresWin.ShowDialog();
 
-            // Reset game state
             ResetGameState();
         }
 
@@ -265,7 +251,7 @@ namespace _8bitbinary_riri
         {
             string csvFilePath = "player_scores.csv";
 
-            // Create or append to the CSV file
+            // append to the CSV file
             using (StreamWriter sw = new StreamWriter(csvFilePath, true))
             {
                 // Write player's data in CSV format: Name,Score,TotalPlayTimeInSeconds
@@ -275,17 +261,14 @@ namespace _8bitbinary_riri
 
         private void ResetGameState()
         {
-            // Reset game state variables
             currentScore = 0;
             timeInterval = 60;
             roundNumber = 1;
 
-            // Reset UI elements
             scoreTextBlock.Text = "Score: 0";
             timerTextBlock.Text = "Time Left: 00:00";
             answerTextBox.Text = "";
 
-            // Start a new round
             StartNewRound();
             
         }

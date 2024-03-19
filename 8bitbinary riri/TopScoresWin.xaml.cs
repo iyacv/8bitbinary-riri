@@ -14,12 +14,9 @@ using System.Windows.Shapes;
 
 namespace _8bitbinary_riri
 {
-    /// <summary>
-    /// Interaction logic for TopScoresWin.xaml
-    /// </summary>
     public partial class TopScoresWin : Window
     {
-        public TopScoresWin(List<(string playerName, int score, int totalPlayTime)> topPlayerScores)
+        public TopScoresWin(List<(string playerName, int score, int totalPlayTime)> topPlayerScores, int recentPlayerScore)
         {
             InitializeComponent();
 
@@ -31,10 +28,12 @@ namespace _8bitbinary_riri
                 int seconds = totalPlayTime % 60;
 
                 // Display total playtime in minutes and seconds format
-                string totalTimeFormatted = $"{minutes} minutes {seconds} seconds";
+                string totalTimeFormatted = $"{minutes} m. {seconds} sec/s.";
 
                 topScoresListBox.Items.Add($"{playerName} - Score: {score}, Total Play Time: {totalTimeFormatted}");
             }
+     
+            currentPlayerScoreTextBox.Text = $"Your Score: {recentPlayerScore}";
         }
     }
 }
