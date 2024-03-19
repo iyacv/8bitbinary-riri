@@ -118,10 +118,8 @@ namespace _8bitbinary_riri
 
             timer.Stop();
 
-            // Calculate the time interval based on the round number
             if (roundNumber <= 11)
-            {
-                // Determine the reduction amount based on the round number
+            {            
                 int reductionAmount = Math.Max(60 - (roundNumber - 1) * 4, 20);
                 timeInterval = reductionAmount;
             }
@@ -132,7 +130,7 @@ namespace _8bitbinary_riri
                 timeInterval = 20;
             }
 
-            timer.Interval = TimeSpan.FromSeconds(1); // Set the timer interval to 1 second
+            timer.Interval = TimeSpan.FromSeconds(1); 
             timer.Start();
             timerTextBlock.Text = $"Time Left: {timeInterval}s";
 
@@ -213,15 +211,13 @@ namespace _8bitbinary_riri
                     topPlayerScores.Add((playerName, score, totalPlayTime));
                 }
             }
-
-            // Sort top player scores by score (descending) 
+            // Sort 
             for (int i = 0; i < topPlayerScores.Count - 1; i++)
             {
                 for (int j = i + 1; j < topPlayerScores.Count; j++)
                 {
                     if (topPlayerScores[j].score > topPlayerScores[i].score)
                     {
-                        // Swap elements if the score of the current element is greater
                         (string playerName, int score, int totalPlayTime) temp = topPlayerScores[i];
                         topPlayerScores[i] = topPlayerScores[j];
                         topPlayerScores[j] = temp;
@@ -229,18 +225,16 @@ namespace _8bitbinary_riri
                 }
             }
 
-            return topPlayerScores.Take(10).ToList(); // Take top 10 scores
+            return topPlayerScores.Take(10).ToList(); 
         }
 
         private void GameOver()
         {
-            // Save player's data to CSV
             SavePlayerDataToCSV(playerName, currentScore, totalPlayTimeInWhole);
 
-            // Load top 10 player scores from the CSV file
+            // Load top 10 player scores 
             List<(string playerName, int score, int totalPlayTime)> topPlayerScores = LoadTopPlayerScores();
 
-            // Show the top 10 player scores window with recent player's score
             TopScoresWin topScoresWin = new TopScoresWin(topPlayerScores, currentScore);
             topScoresWin.ShowDialog();
 
@@ -254,7 +248,6 @@ namespace _8bitbinary_riri
             // append to the CSV file
             using (StreamWriter sw = new StreamWriter(csvFilePath, true))
             {
-                // Write player's data in CSV format: Name,Score,TotalPlayTimeInSeconds
                 sw.WriteLine($"{playerName},{score},{totalPlayTimeInWhole}");
             }
         }

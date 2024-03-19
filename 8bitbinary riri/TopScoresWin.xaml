@@ -5,26 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_8bitbinary_riri"
         mc:Ignorable="d"
-        Title="LeaderBoard" Height="460" Width="400">
+        Title="LeaderBoard" Height="460" Width="570">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Image Source="/pixelleaderb.png" Stretch="UniformToFill" Margin="0,-1,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Width="434" Grid.Column="1">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="0"/>
-                    <RotateTransform Angle="0"/>
-                    <TranslateTransform X="0"/>
-                </TransformGroup>
-            </Image.RenderTransform>
+
+        <Image Source="/pixelleaderb.png" Margin="0,-1,0,0" HorizontalAlignment="Left" Width="573"  Stretch="UniformToFill" >
+
         </Image>
         <Label Content="LeaderBoards" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontSize="18" Width="250" FontFamily="DePixel Breit" Margin="0,20,0,0" HorizontalContentAlignment="Center" Grid.Column="1" Height="43"/>
-        <ListBox Name="topScoresListBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="350" Height="258" Grid.Column="1" Margin="0,73,0,0">
-        </ListBox>
-        <TextBox x:Name="currentPlayerScoreTextBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Height="37" Margin="0,378,0,0" IsReadOnly="True" FontFamily="DePixel Breit" Foreground="#FF241260" FontSize="16" Grid.Column="1" Background="#FFFBAC1D"/>
+        <ListBox Name="topScoresListBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="494" Height="278" Margin="0,73,0,0" Background="#FF241260" BorderBrush="White" Foreground="White" FontFamily="DePixel Breit"/>
+        <TextBox x:Name="currentPlayerScoreTextBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Height="37" Margin="0,373,0,0" IsReadOnly="True" FontFamily="DePixel Breit" Foreground="#FF241260" FontSize="16" Grid.Column="1" Background="#FFFBAC1D"/>
 
     </Grid>
 </Window>
